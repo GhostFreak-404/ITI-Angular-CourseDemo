@@ -1,0 +1,180 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "Name": "Lenvo thinpad X230",
+      "Price": 100,
+      "Quantity": 10,
+      "CategoryID": 1,
+      "ImgURL": "https://placehold.co/200x100",
+      "QuantityInCart": null
+    },
+    {
+      "id": 2,
+      "Name": "Dell",
+      "Price": 200,
+      "Quantity": 10,
+      "CategoryID": 1,
+      "ImgURL": "https://placehold.co/200x100",
+      "QuantityInCart": null
+    },
+    {
+      "id": 3,
+      "Name": "Lenovo Tab",
+      "Price": 100,
+      "Quantity": 10,
+      "CategoryID": 2,
+      "ImgURL": "https://placehold.co/200x100"
+    },
+    {
+      "id": 4,
+      "Name": "Samsung Tab",
+      "Price": 100,
+      "Quantity": 10,
+      "CategoryID": 2,
+      "ImgURL": "https://placehold.co/200x100"
+    },
+    {
+      "id": 5,
+      "Name": "Samsung note 10",
+      "Price": 100,
+      "Quantity": 10,
+      "CategoryID": 3,
+      "ImgURL": "https://placehold.co/200x100",
+      "QuantityInCart": null
+    },
+    {
+      "id": 6,
+      "Name": "Samsung S10",
+      "Price": 100,
+      "Quantity": 10,
+      "CategoryID": 3,
+      "ImgURL": "https://placehold.co/200x100",
+      "QuantityInCart": null
+    }
+  ],
+  "Categories": [
+    {
+      "id": 1,
+      "Name": "Laptops",
+      "Desciption": "This is description"
+    },
+    {
+      "id": 2,
+      "Name": "Tablets",
+      "Desciption": "This is description"
+    },
+    {
+      "id": 3,
+      "Name": "Mobiles",
+      "Desciption": "This is description"
+    },
+    {
+      "id": 5,
+      "Name": "Consoles",
+      "Desciption": "This is description"
+    }
+  ],
+  "User": [
+    {
+      "id": 1,
+      "fullName": "admin",
+      "email": "admin@admin.com",
+      "phoneNumber": "0000",
+      "address": {
+        "city": "cairo",
+        "postalCode": "0000",
+        "street": "4th street"
+      },
+      "password": "aa2277##",
+      "delivery": "specific",
+      "deliveryDay": "friday"
+    },
+    {
+      "fullName": "youssef",
+      "email": "yuosafa@yahoo.com",
+      "phoneNumber": [
+        "01285627474"
+      ],
+      "address": {
+        "city": "giza",
+        "postalCode": "44240",
+        "street": "4th"
+      },
+      "delivery": "specific",
+      "deliveryDay": "fri",
+      "password": "aa",
+      "confirmPassword": "aa",
+      "id": 2
+    },
+    {
+      "fullName": "youssef",
+      "email": "youssefadly404@gmail.com",
+      "phoneNumber": [
+        "01285627474"
+      ],
+      "address": {
+        "city": "giza",
+        "postalCode": "44444",
+        "street": "4th"
+      },
+      "delivery": "specific",
+      "deliveryDay": "friday",
+      "password": "X&2*rwL7#M08a@0I",
+      "confirmPassword": "X&2*rwL7#M08a@0I",
+      "id": 3
+    },
+    {
+      "fullName": "youssef",
+      "email": "o@o.com",
+      "phoneNumber": [
+        "01285627474"
+      ],
+      "address": {
+        "city": "aaaaaa",
+        "postalCode": "aa",
+        "street": "4th"
+      },
+      "delivery": "",
+      "deliveryDay": "",
+      "password": "mEh6eWA#t$N^WSfY",
+      "confirmPassword": "mEh6eWA#t$N^WSfY",
+      "id": 4
+    },
+    {
+      "fullName": "zzzzzz",
+      "email": "youssefadly@gmail.com",
+      "phoneNumber": [
+        "01285627474",
+        "01285627474"
+      ],
+      "address": {
+        "city": "giza",
+        "postalCode": "44240",
+        "street": "4th"
+      },
+      "delivery": "any",
+      "deliveryDay": "",
+      "password": "zA2#333",
+      "confirmPassword": "zA2#333",
+      "id": 5
+    },
+    {
+      "fullName": "",
+      "email": "",
+      "phoneNumber": [
+        ""
+      ],
+      "address": {
+        "city": "",
+        "postalCode": "",
+        "street": ""
+      },
+      "delivery": "",
+      "deliveryDay": "",
+      "password": "",
+      "confirmPassword": "",
+      "id": 6
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+<div class="m-3 text-danger">
+  [For Testing] <br />
+  {{ regForm.errors | json }}
+</div>
+<form class="row g-3 m-5 needs-validation" [formGroup]="regForm" (ngSubmit)="confirm()">
+  <div class="col-md-6">
+    <label for="Name" class="form-label">Full Name</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="fullName"
+      [class.is-invalid]="fullName?.invalid && fullName?.touched"
+      [class.is-valid]="fullName?.valid"
+      id="Name"
+    />
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback" *ngIf="fullName?.errors?.['required']">
+      Name Is Required
+    </div>
+    <div class="invalid-feedback" *ngIf="fullName?.errors?.['minlength']">
+      Name Should be 5 Charactars or More
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="Email" class="form-label">Email</label>
+    <div class="position-relative">
+      <input
+        type="text"
+        class="form-control position-relative"
+        formControlName="email"
+        [class.is-invalid]="email?.invalid && email?.touched"
+        [class.is-valid]="email?.valid"
+        id="Email"
+      />
+      <div
+        class="spinner-grow position-absolute z-3"
+        style="top: 10% !important; right: 5px !important"
+        *ngIf="email?.pending"
+        role="status"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="valid-feedback ms-1" *ngIf="email?.valid">Looks good!</div>
+      <div class="invalid-feedback ms-1" *ngIf="email?.errors?.['required']">
+        Email Is Required
+      </div>
+      <div class="invalid-feedback ms-1" *ngIf="email?.errors?.['email']">
+        Please Provide a Valid Email
+      </div>
+      <div class="invalid-feedback ms-1" *ngIf="email?.errors?.['emailExist']">
+        Email Is Registered Before
+      </div>
+    </div>
+  </div>
+  <ng-container  formArrayName="phoneNumber">
+    <div
+      class="col-md-4"
+      *ngFor="let control of phoneNumber.controls; let i = index"
+    >
+      <label for="Phone{{ i + 1 }}" class="form-label" >
+        Phone Number #{{ i + 1 }}
+      </label>
+      <div class="input-group has-validation">
+        <input
+          type="text"
+          class="form-control position-relative"
+          placeholder="012-8562-7474"
+          [class.is-valid]="control?.valid && control?.touched"
+          [class.is-invalid]="control?.invalid && control?.touched"
+          [formControlName]="i"
+          id="Phone{{ i + 1 }}"
+          name="Phone{{ i + 1 }}"
+        />
+        <button
+          type="button"
+          [hidden]="i == 0"
+          (click)="removeMobileNumber(i)"
+          class="btn btn-primary btn-sm me-2 rounded-1 position-absolute top-50 end-0 translate-middle-y z-3"
+          style="z-index: 99 !important; height: 60%; line-height: 50%"
+        >
+          <b>-</b>
+        </button>
+        <div class="invalid-feedback" *ngIf="control.errors?.['required'] && control?.touched">
+          Please Provide a Phone Number
+        </div>
+        <div class="invalid-feedback" *ngIf="control.errors?.['pattern'] && control?.touched">
+          Phone Number should Start with 012 Followed by 8 Numbers
+        </div>
+        <div class="valid-feedback" *ngIf="control?.valid && control?.touched">
+          Looks good!
+        </div>
+      </div>
+    </div>
+    <button
+      type="button"
+      (click)="addMobileNumber()"
+      class="mt-5 ms-4 h-50 btn btn-primary btn-sm"
+      style="width: fit-content; padding-inline: 12px; margin-bottom: 7px"
+    >
+      <b>+</b>
+    </button>
+  </ng-container>
+  <div class="col-md-12">
+    <label class="form-label fs-5">Address</label>
+  </div>
+  <div class="d-flex gap-3 mt-4" formGroupName="address">
+    <div class="col-md-4">
+      <label for="City" class="form-label">City</label>
+      <input
+        type="text"
+        class="form-control"
+        id="City"
+        formControlName="city"
+        [class.is-valid]="city?.valid"
+        [class.is-invalid]="city?.invalid && city?.touched"
+      />
+      <div class="invalid-feedback">Please provide a valid city.</div>
+    </div>
+    <div class="col-md-3">
+      <label for="postal" class="form-label">postal Code</label>
+      <input
+        type="text"
+        class="form-control"
+        id="postal"
+        formControlName="postalCode"
+        [class.is-valid]="postal?.valid"
+        [class.is-invalid]="postal?.invalid && postal?.touched"
+      />
+      <div class="invalid-feedback">postal Code Is Required</div>
+    </div>
+    <div class="col-md-4">
+      <label for="street" class="form-label">street</label>
+      <input
+        type="text"
+        class="form-control"
+        id="street"
+        formControlName="street"
+        [class.is-valid]="street?.valid"
+        [class.is-invalid]="street?.invalid && street?.touched"
+      />
+      <div class="invalid-feedback">Street Is Required</div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <label class="form-label m-3">Delivery options</label>
+    <div
+      class="btn-group"
+      role="group"
+      aria-label="Basic radio toggle button group"
+    >
+      <input
+        type="radio"
+        class="btn-check"
+        formControlName="delivery"
+        name="delivery"
+        value="any"
+        (change)="changeDelivery()"
+        id="btnradio1"
+        autocomplete="off"
+      />
+      <label class="btn btn-primary" for="btnradio1">Any days</label>
+
+      <input
+        type="radio"
+        class="btn-check"
+        formControlName="delivery"
+        name="delivery"
+        value="specific"
+        (change)="changeDelivery()"
+        id="btnradio2"
+        autocomplete="off"
+      />
+      <label class="btn btn-primary" for="btnradio2">Specific days</label>
+    </div>
+    <div class="mb-3" *ngIf="delivery?.value == 'specific'">
+      <label for="day" class="form-label">Specify Day</label>
+      <input
+        type="text"
+        formControlName="deliveryDay"
+        class="form-control"
+        name="deliveryDay"
+        id="deliveryDay"
+        aria-describedby="helpId"
+        placeholder="Friday"
+      />
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="Password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="Password"
+      formControlName="password"
+      [class.is-valid]="password?.valid"
+      [class.is-invalid]="password?.invalid && password?.touched || regForm.errors?.['unmatchedPassword'] || regForm.errors?.['passwordIsSameAsFullname'] || regForm.errors?.['patternErr']"
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="password?.errors?.['required'] && password?.touched"
+    >
+      Please provide a Password
+    </div>
+    <div
+      class="invalid-feedback"
+      *ngIf="password?.errors?.['minlength'] && password?.touched"
+    >
+      Password Must be more then 6 Charactars
+    </div>
+    <div
+      class="invalid-feedback"
+      *ngIf=" regForm.errors?.['passwordIsSameAsFullname'] && !(password?.errors)"
+    >
+      the full name should not be included in the password
+    </div>
+    <div
+      class="invalid-feedback"
+      *ngIf="regForm.errors?.['patternErr'] && !(password?.errors)"
+    >
+      Password should have at least one: Capital letter, small letter, number,
+      special character <br />
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="Confirm" class="form-label">Confirm Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="Confirm"
+      formControlName="confirmPassword"
+      [class.is-valid]="confirmPassword?.valid"
+      [class.is-invalid]="confirmPassword?.invalid && confirmPassword?.touched || regForm.errors?.['unmatchedPassword']  || regForm.errors?.['passwordIsSameAsFullname'] || regForm.errors?.['patternErr']"
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="confirmPassword?.errors?.['required'] && confirmPassword?.touched"
+    >
+      Confirm Password Is Required
+    </div>
+    <div
+      class="invalid-feedback"
+      *ngIf="regForm.errors?.['unmatchedPassword'] && !(confirmPassword?.errors) && confirmPassword?.touched"
+    >
+      passwords don't match
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary offset-9" [disabled]="regForm.invalid" type="submit">
+      Register
+    </button>
+  </div>
+</form>

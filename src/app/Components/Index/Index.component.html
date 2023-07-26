@@ -1,0 +1,200 @@
+<style>
+  li {
+    padding: 12px;
+  }
+</style>
+<div
+  class="d-flex flex-column bg-dark align-items-center align-items-sm-start px-3 pt-2 text-white fs-5"
+  style="height: 100%"
+>
+  <ul
+    class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+    id="menu"
+  >
+    <li class="nav-item">
+      <a href="#" class="nav-link align-middle px-0" data-bs-toggle="collapse">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="30"
+          style="margin-bottom: 5px"
+          fill="currentColor"
+          class="bi bi-house"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"
+          />
+        </svg>
+        <span class="ms-1 d-none d-sm-inline">Home</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="#submenu1"
+        data-bs-toggle="collapse"
+        class="nav-link px-0 align-middle"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="30"
+          style="margin-bottom: 5px"
+          fill="currentColor"
+          class="bi bi-speedometer2"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"
+          />
+        </svg>
+        <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+      </a>
+      <ul
+        class="collapse show nav flex-column ms-1"
+        id="submenu1"
+        data-bs-parent="#menu"
+      >
+        <li class="w-100">
+          <a href="#" class="nav-link px-0">
+            <span class="d-none d-sm-inline">Item</span> 1
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-0">
+            <span class="d-none d-sm-inline">Item</span> 2
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#" class="nav-link px-0 align-middle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="30"
+          style="margin-bottom: 5px"
+          fill="currentColor"
+          class="bi bi-table"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"
+          />
+        </svg>
+        <span class="ms-1 d-none d-sm-inline">Orders</span></a
+      >
+    </li>
+    <li>
+      <a
+        href="#submenu2"
+        data-bs-toggle="collapse"
+        class="nav-link px-0 align-middle"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="30"
+          style="margin-bottom: 5px"
+          fill="currentColor"
+          class="bi bi-bootstrap"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M5.062 12h3.475c1.804 0 2.888-.908 2.888-2.396 0-1.102-.761-1.916-1.904-2.034v-.1c.832-.14 1.482-.93 1.482-1.816 0-1.3-.955-2.11-2.542-2.11H5.062V12zm1.313-4.875V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23H6.375zm0 3.762V8.162h1.822c1.236 0 1.887.463 1.887 1.348 0 .896-.627 1.377-1.811 1.377H6.375z"
+          />
+          <path
+            d="M0 4a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4zm4-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V4a3 3 0 0 0-3-3H4z"
+          />
+        </svg>
+        <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a
+      >
+      <ul
+        class="collapse nav flex-column ms-1"
+        id="submenu2"
+        data-bs-parent="#menu"
+      >
+        <li class="w-100">
+          <a href="#" class="nav-link px-0">
+            <span class="d-none d-sm-inline">Item</span> 1</a
+          >
+        </li>
+        <li>
+          <a href="#" class="nav-link px-0">
+            <span class="d-none d-sm-inline">Item</span> 2</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a
+        href="#submenu3"
+        data-bs-toggle="collapse"
+        class="nav-link px-0 align-middle"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="30"
+          style="margin-bottom: 5px"
+          fill="currentColor"
+          class="bi bi-grid"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"
+          />
+        </svg>
+        <span class="ms-1 d-none d-sm-inline">Products</span>
+      </a>
+      <ul
+        class="collapse nav flex-column ms-1"
+        id="submenu3"
+        data-bs-parent="#menu"
+      >
+        <li class="w-100">
+          <a href="#" class="nav-link px-0">
+            <span class="d-none d-sm-inline">Product</span> 1</a
+          >
+        </li>
+        <li>
+          <a href="#" class="nav-link px-0">
+            <span class="d-none d-sm-inline">Product</span> 2</a
+          >
+        </li>
+        <li>
+          <a href="#" class="nav-link px-0">
+            <span class="d-none d-sm-inline">Product</span> 3</a
+          >
+        </li>
+        <li>
+          <a href="#" class="nav-link px-0">
+            <span class="d-none d-sm-inline">Product</span> 4</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#" class="nav-link px-0 align-middle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="30"
+          style="margin-bottom: 5px"
+          fill="currentColor"
+          class="bi bi-people-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+          />
+        </svg>
+        <span class="ms-1 d-none d-sm-inline">Customers</span>
+      </a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,96 @@
+<main class="container-fluid py-4">
+  <!-- Dropdown For Filtering Catagories -->
+  <mat-form-field>
+    <mat-label>Filter Catagories</mat-label>
+    <mat-select [(ngModel)]="SelectedCategory">
+      <ng-container>
+        <mat-option value="All">All</mat-option>
+        <mat-option *ngFor="let cat of catList" [value]="cat.id" #inputValue>
+          {{ cat.Name }}
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+  <!-- Child Component -->
+  <app-CartChild
+    [CategoryID]="SelectedCategory"
+    (addToCart)="add($event)"
+    #CartChild
+  ></app-CartChild>
+
+  <!-- Cart Table -->
+  <div class="table-responsive-lg">
+    <table
+      class="table table-striped-columns table-hover table-bordered align-middle"
+    >
+      <thead class="table-danger">
+        <caption>
+          Shopping Cart
+        </caption>
+        <tr>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Unit Price</th>
+          <th>
+            total <span class="badge text-bg-warning">after 14% tax</span>
+          </th>
+          <th>Selected Quantity</th>
+          <th>Delete Product</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr class="table-light" *ngFor="let product of cart">
+          <td scope="row">{{ product.ProductID }}</td>
+          <td>{{ product.ProductName }}</td>
+          <td>{{ product.Unitprice | currency }}</td>
+          <td>
+            {{
+              +Selectedquantity.value * product.Unitprice +
+              +Selectedquantity.value * product.Unitprice * 0.14 | currency
+            }}
+          </td>
+          <td>
+            <div class="form-floating mb-3">
+              <input
+                type="number"
+                min="0"
+                [max]="productList[product.ProductID-1].Quantity"
+                class="form-control mt-3"
+                name="formId1"
+                id="formId1"
+                placeholder="Quantity"
+                #Selectedquantity
+                (change)="change(product)"
+                [value]="product.QuantityInCart"
+                [(ngModel)]="product.QuantityInCart"
+              />
+              <label for="formId1">Quantity</label>
+            </div>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="delete(product)"
+            >
+              Delete Product
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot class="table-group-divider">
+        <td class="display-4" colspan="6" *ngIf="total !== 0">
+          Total price of All Products is {{ total | currency }}
+        </td>
+      </tfoot>
+    </table>
+    <button
+      type="button"
+      *ngIf="total !== 0"
+      (click)="checkOut()"
+      class="btn btn-success btn-lg col-3 offset-7"
+    >
+      CheckOut
+    </button>
+  </div>
+</main>

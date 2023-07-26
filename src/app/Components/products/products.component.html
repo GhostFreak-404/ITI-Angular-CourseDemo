@@ -1,0 +1,120 @@
+<h3 *ngIf="discountAmount !== 'No Discount'">
+  We offer an explicit discount of: {{ discountAmount }}
+  <br>{{date | date: 'fullDate'}}
+</h3>
+<mat-form-field>
+  <mat-label>Filter Catagories</mat-label>
+  <mat-select [(ngModel)]="catID" (closed)="rebuildTable()">
+    <!-- <ng-container *ngFor="let cat of catList"> -->
+      <!-- <mat-option [value]="cat.id">{{cat.name}}</mat-option> -->
+    <!-- </ng-container> -->
+  </mat-select>
+</mat-form-field>
+<p class="text-success fw-bold fs-4">Catagory ID is => {{catID}}</p>
+<button type="button" (click)="resetFilter()" class="btn btn-primary btn-lg">Reset Filtering</button>
+<!-- <h3 *ngIf="discountAmount !== 'No Discount'" class="text bg"  [class]="classes">
+  We offer an explicit discount of: {{ discountAmount }}
+</h3> -->
+<!-- <h3 *ngIf="discountAmount !== 'No Discount'"  [style.color]="Isclasses ? 'red' : 'blue' ">
+  We offer an explicit discount of: {{ discountAmount }}
+</h3> -->
+<!-- <h3 *ngIf="discountAmount !== 'No Discount'"  [ngClass]="{
+  'textblue': Isclasses,
+  'bg-baige': Isclasses
+  }">
+  We offer an explicit discount of: {{ discountAmount }}
+</h3> -->
+<!-- <h3 *ngIf="discountAmount !== 'No Discount'"  [ngStyle]="{
+    'color': 'red',
+    'background-color': Isclasses ? 'blue' : 'green'
+  }">
+  We offer an explicit discount of: {{ discountAmount }}
+</h3> -->
+
+<!-- https://www.freecodecamp.org/news/everything-you-need-to-know-about-ng-template-ng-content-ng-container-and-ngtemplateoutlet-4b7b51223691/ -->
+<div class="table-responsive" *ngIf="!isPurchased">
+  <table
+    class="table table-bordered table-dark align-top"
+  >
+    <thead class="table-dark">
+      <caption>
+        Products
+      </caption>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Buy</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <!-- <tr class="table-primary" *ngFor="let product of productList; let i=index"> -->
+      <!-- <tr class="table-primary" *ngFor="let product of productList; index as i; trackBy: trackByFunc"> -->
+      <ng-container *ngFor="let product of productList; index as i; trackBy: trackByFunc">
+        <!-- <tr class="table-primary" *ngIf="product.Quantity!=0"> -->
+        <!-- <tr class="table-primary" [hidden]="catID!=product.CategoryID" *ngIf="product.Quantity!=0"> -->
+        <!-- <tr class="table-primary" [ngClass]="{'table-warning': product.Quantity==1}" [hidden]="product.Quantity==0" *ngIf="catID==product.CategoryID"> -->
+        <tr class="table-primary" [ngClass]="{'table-warning': product.Quantity==1}" [hidden]="catID!=product.CategoryID" *ngIf="product.Quantity!=0">
+        <!-- <tr [ngStyle]="{'background-color': product.Quantity==1 ? 'table-warning' : 'table-primary'}" [hidden]="catID!=product.CategoryID" *ngIf="product.Quantity!=0"> -->
+        <!-- <tr class="table-primary"> -->
+          <!-- Save Navigation Operator? -->
+          <!-- <td scope="row">{{product?.ID}}</td> -->
+          <td scope="row">{{i+1}}</td>
+          <td class="position-relative">
+            {{product.Name}}
+            <span class="badge bg-danger position-absolute bottom-50 translate-middle">
+              <!-- {{catList[product.CategoryID-1].name}} -->
+            </span>
+          </td>
+          <td><img Shadow="rgba(0, 0, 0, 0.15)" [src]="product.ImgURL" alt=""></td>
+          <td>
+            <!-- <div *ngIf="product.Quantity!=0">{{product.Quantity}}</div>
+            <div *ngIf="product.Quantity==0">Out Of Stock</div> -->
+            <!--  -->
+            <!-- <div *ngIf="product.Quantity!=0 else OutOfStock">{{product.Quantity}}</div>
+            <ng-template #OutOfStock>Out Of Stock</ng-template> -->
+            <!--  -->
+            <ng-container [ngSwitch]="product.Quantity">
+              <div *ngSwitchCase="0">Out Of Stock</div>
+              <div *ngSwitchCase="1">Last item</div>
+              <div *ngSwitchCase="2">Last 2 items</div>
+              <div *ngSwitchDefault>{{product.Quantity}}</div>
+            </ng-container>
+          </td>
+          <td>{{product.Price | eRate: 10 | currency: 'EGP ': 'code'}}</td>
+          <td><button type="button" (click)="product.Quantity=product.Quantity-1" class="btn btn-primary">Buy</button></td>
+        </tr>
+      </ng-container>
+    </tbody>
+    <tfoot></tfoot>
+  </table>
+</div>
+<h1 class="display-1" *ngIf="isPurchased">Thanks for purchasing from our Store</h1> <!--” + ClientName Entered-->
+<button (click)="isPurchased = !isPurchased" type="button" class="btn btn-danger mb-3 col-3">Purchase</button>
+<h2>Client Information</h2>
+  <!-- <input [(ngModel)]="ClientName" class="form-control col-7 w-50" type="text" placeholder="Enter your name"> -->
+  <div class="form-floating mb-3">
+    <input
+      [(ngModel)]="ClientName" class="form-control col-7 w-50"
+      type="text"
+      class="form-control" name="formId1" id="formId1" placeholder="Enter your name">
+    <label for="formId1">Name</label>
+  </div>
+<h1 class="m-2 mb-3">Your name: {{ ClientName }}</h1>
+<div class="mb-3">
+  <label for="id" class="form-label">Your ID Number</label>
+  <h4>{{idNumber | DateOfBirthFromId}}</h4>
+</div>
+<div class="mb-3">
+  <label for="id" class="form-label">Your Credit Number</label>
+  <h4>{{creditNum | CreditCardFormat}}</h4>
+</div>
+<!-- <div class="mb-3">
+  <label for="cn" class="form-label">Credit Card Number</label>
+  <input type="number"
+    class="form-control" name="cn" id="cn" aria-describedby="helpId" placeholder="enter your credit number">
+</div> -->
+<!-- <input type="text" class="form-control" #form (blur)="display(form.value)"> -->
+<h1 class="display-6">{{review}}</h1>

@@ -1,0 +1,45 @@
+<!-- <div class="text-danger mt-3"> -->
+  <!-- <h3 class="text-danger">[For Testing] <br> To be removed</h3> -->
+  <!-- {{product | json}} -->
+  <!-- <br> -->
+  <!-- {{ProductName.errors | json}} -->
+  <!-- <br> -->
+  <!-- {{ProductName.className | json}} -->
+  <!-- <br> -->
+  <!-- {{ProductName | json}} -->
+  <!-- <br> -->
+  <!-- {{form.errors | json}} -->
+<!-- </div> -->
+
+<!-- <button type="button" class="btn btn-success" (click)="add()">Add Product</button> -->
+
+<form (ngSubmit)="add()" class="my-5" #form="ngForm">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Product Name</label>
+    <input type="text" #ProductName="ngModel" [(ngModel)]="product.Name"  name="prodname"  required pattern="[A-Za-z 0-9]{3,}" class="form-control" id="exampleInputEmail1">
+    <div class="mt-1 p-1" *ngIf="!ProductName.untouched && !ProductName.valid">
+      <div  *ngIf="ProductName.errors?.['required']" class="form-text text-bg-warning w-25 rounded ps-3">Name Is Required</div>
+      <div  *ngIf="ProductName.errors?.['pattern']"  class="form-text text-bg-warning w-25 rounded ps-3">More Then 3 Letters or Numbers</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Price</label>
+    <input type="number" [(ngModel)]="product.Price" required class="form-control"  name="prodprice" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="exampleCheck1">Quantity</label>
+    <input type="number" [(ngModel)]="product.Quantity" required  name="prodquantity" class="form-control" id="exampleCheck1">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" name="prodquantity" for="exampleCheck1">Catagories</label>
+    <select class="form-select" name="Catagories" required [(ngModel)]="product.CategoryID">
+      <option selected disabled>Open this select menu</option>
+      <option  *ngFor="let cat of AllCat" [value]="cat.id" #inputValue>{{cat.Name}}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="imgURL" class="form-label">Choose file</label>
+    <input type="file" [(ngModel)]="product.ImgURL" class="form-control" name="imgURL" id="imgURL" placeholder="img" aria-describedby="fileHelpId">
+  </div>
+  <button type="submit" [disabled]="form.invalid" class="btn btn-primary offset-9 mt-2 px-5">Submit</button>
+</form>

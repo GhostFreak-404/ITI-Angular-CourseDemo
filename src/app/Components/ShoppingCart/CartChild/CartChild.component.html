@@ -1,0 +1,137 @@
+<div class="table-responsive-md m-4">
+  <table class="table table-secondary table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Product Image</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Details</th>
+        <th scope="col">Admin</th>
+        <th scope="col">Selected Quantity</th>
+        <th scope="col">Buy</th>
+      </tr>
+    </thead>
+    <tbody class="table-light">
+      <tr
+        *ngFor="let product of productList"
+        [ngClass]="{
+          'table-warning': product.Quantity == 1,
+          'table-danger': product.Quantity == 0
+        }"
+      >
+        <td scope="row">{{ product.id }}</td>
+        <td>{{ product.Name }}</td>
+        <td>
+          <img [src]="product.ImgURL" alt="productImage" class="img-fluid" />
+        </td>
+        <td>{{ product.Price | currency }}</td>
+        <td [ngSwitch]="product.Quantity">
+          <ng-container *ngSwitchCase="0">Out Of Stock</ng-container>
+          <ng-container *ngSwitchCase="1">Last Item</ng-container>
+          <ng-container *ngSwitchDefault>{{ product.Quantity }}</ng-container>
+        </td>
+        <td>
+          <button
+            mat-raised-button
+            color="primary"
+            class="mt-4"
+            (click)="navUrl(product.id)"
+          >
+            Details
+          </button>
+          <!-- <a class="btn btn-primary" mat-raised-button color="warn" [routerLink]="['/Product', product.id]" role="button">Delete</a> -->
+        </td>
+        <td class="d-flex flex-column">
+          <a
+            class="mt-1"
+            mat-raised-button
+            [routerLink]="['/admin/addProduct', product.id]"
+            role="button"
+            >Edit</a
+          >
+          <!-- Button trigger modal -->
+          <a
+            class="mt-3"
+            mat-raised-button
+            color="warn"
+            role="button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModel"
+            (click)="modelRun(product)"
+            >Delete</a
+          >
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModel"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header py-1 pt-3 text-bg-danger">
+                  <h1 class="modal-title" id="exampleModalLabel">
+                    Warning
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body fs-5">
+                  Are You Sure You Want To Delete {{ SelectedProduct.Name | json }} From Your
+                  Products
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="del()"
+                    data-bs-dismiss="modal"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              min="0"
+              [max]="product.Quantity"
+              class="form-control mt-3"
+              name="formId1"
+              id="formId1"
+              placeholder="Quantity"
+              #inputValue
+            />
+            <label for="formId1">Quantity</label>
+          </div>
+        </td>
+        <td>
+          <button
+            class="btn btn-sm btn-primary mt-4"
+            (click)="buy(product, inputValue.value); inputValue.value = ''"
+          >
+            Add To Cart
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
