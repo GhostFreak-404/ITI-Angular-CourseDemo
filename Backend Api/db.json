@@ -52,6 +52,13 @@
       "CategoryID": 3,
       "ImgURL": "https://placehold.co/200x100",
       "QuantityInCart": 10
+    },
+    {
+      "Name": "PS5",
+      "Price": 100,
+      "Quantity": 4,
+      "CategoryID": "5",
+      "id": 7
     }
   ],
   "Categories": [
