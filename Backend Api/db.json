@@ -4,7 +4,7 @@
       "id": 1,
       "Name": "Lenvo thinpad X230",
       "Price": 100,
-      "Quantity": 10,
+      "Quantity": 5,
       "CategoryID": 1,
       "ImgURL": "https://placehold.co/200x100",
       "QuantityInCart": null
@@ -32,7 +32,8 @@
       "Price": 100,
       "Quantity": 10,
       "CategoryID": 2,
-      "ImgURL": "https://placehold.co/200x100"
+      "ImgURL": "https://placehold.co/200x100",
+      "QuantityInCart": null
     },
     {
       "id": 5,
@@ -41,7 +42,7 @@
       "Quantity": 10,
       "CategoryID": 3,
       "ImgURL": "https://placehold.co/200x100",
-      "QuantityInCart": null
+      "QuantityInCart": 10
     },
     {
       "id": 6,
@@ -50,7 +51,7 @@
       "Quantity": 10,
       "CategoryID": 3,
       "ImgURL": "https://placehold.co/200x100",
-      "QuantityInCart": null
+      "QuantityInCart": 10
     }
   ],
   "Categories": [
@@ -175,6 +176,23 @@
       "password": "",
       "confirmPassword": "",
       "id": 6
+    },
+    {
+      "fullName": "Youssef Adly",
+      "email": "aa@aaaa",
+      "phoneNumber": [
+        "01285627474"
+      ],
+      "address": {
+        "city": "giza",
+        "postalCode": "44240",
+        "street": "4th"
+      },
+      "delivery": "any",
+      "deliveryDay": "",
+      "password": "$iOG3Y3FG4OxY!4e",
+      "confirmPassword": "$iOG3Y3FG4OxY!4e",
+      "id": 7
     }
   ]
 }
