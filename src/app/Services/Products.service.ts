@@ -104,7 +104,7 @@ export class ProductsService {
   // }
 
   getAllProducts(): Observable<IProduct[]> {
-    return this.httpClient.get<IProduct[]>(`${environment.ApiLink}/products`);
+    return this.httpClient.get<IProduct[]>(`${environment.LiveGetApi}/products`);
   }
 
   getProductsByCatID(catID: string): Observable<IProduct[]> {
@@ -112,16 +112,16 @@ export class ProductsService {
       return this.getAllProducts();
     } else {
       return this.httpClient.get<IProduct[]>(
-        `${environment.ApiLink}/products?CategoryID=${catID}`
+        `${environment.LiveGetApi}/products?CategoryID=${catID}`
       );
     }
   }
   getProductByID(prodID: number): Observable<IProduct> {
-    return this.httpClient.get<IProduct>(`${environment.ApiLink}/products/${prodID}`);
+    return this.httpClient.get<IProduct>(`${environment.LiveGetApi}/products/${prodID}`);
   }
 
   getAllCateogories(): Observable<ICategory[]> {
-    return this.httpClient.get<ICategory[]>(`${environment.ApiLink}/Categories`)
+    return this.httpClient.get<ICategory[]>(`${environment.LiveGetApi}/Categories`)
   }
 
   httpOptions = {
