@@ -67,7 +67,7 @@ export class AuthUserService {
 
   checkUser(email: string) {
     return this.httpClient.get<[]>(
-      `${environment.LiveGetApi}/User?email=${email}`
+      `${environment.ApiLink}/User?email=${email}`
     );
   }
 }
